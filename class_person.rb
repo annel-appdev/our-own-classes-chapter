@@ -24,3 +24,32 @@ end
 #  other_person.age
 # Output:
 #=>  45
+
+require "date"
+
+class Person
+  attr_accessor :first_name
+  attr_accessor :last_name
+  attr_accessor :birthdate
+
+  def full_name
+  return self.first_name + " " + self.last_name
+  end
+
+  def age
+    dob = Date.parse(self.birthdate)
+    now = Date.today
+    age_in_days = now - dob
+    age_in_years = age_in_days / 365
+    return age_in_years.to_i
+  end
+end
+
+person1 = Person.new
+person1.first_name = "Anne"
+person1.last_name = "Lau"
+person1.birthdate = "February 28, 1966"
+
+p person1.full_name
+p person1.age
+
